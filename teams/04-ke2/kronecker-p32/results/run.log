@@ -1,0 +1,50 @@
+2026-10-24 21:13:02,673 torch 2.14.1 | transformers 5.20.2 | tokenizers 0.23.3 | kronecker_embeddings 0.1.1 | threads 4
+2026-10-24 21:13:04,268 HTTP Request: GET https://huggingface.co/api/models/openai-community/gpt2 "HTTP/1.1 200 OK"
+2026-10-24 21:13:04,559 HTTP Request: GET https://huggingface.co/api/models/openai-community/gpt2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-10-24 21:13:04,833 HTTP Request: GET https://huggingface.co/api/models/openai-community/gpt2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-10-24 21:13:05,739 [gpt2] V=50257 tables built (3.1s); decode!=raw rows: 344
+2026-10-24 21:13:15,497 [gpt2/decode] distinct=49914 groups=14 colliding=357 | L1 True L2 True T1 True modes True
+2026-10-24 21:13:25,435 [gpt2/raw] distinct=50247 groups=7 colliding=17 | L1 True L2 True T1 True modes True
+2026-10-24 21:13:25,443 [gpt2] done in 22.8s, all checks pass: True
+2026-10-24 21:13:26,272 HTTP Request: GET https://huggingface.co/api/models/unsloth/Llama-3.2-1B "HTTP/1.1 200 OK"
+2026-10-24 21:13:26,617 HTTP Request: GET https://huggingface.co/api/models/unsloth/Llama-3.2-1B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-10-24 21:13:27,161 HTTP Request: GET https://huggingface.co/api/models/unsloth/Llama-3.2-1B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-10-24 21:13:28,886 HTTP Request: GET https://huggingface.co/api/models/unsloth/Llama-3.2-1B "HTTP/1.1 200 OK"
+2026-10-24 21:13:31,062 [llama-3.2] V=128256 tables built (5.6s); decode!=raw rows: 1352
+2026-10-24 21:13:52,367 [llama-3.2/decode] distinct=126845 groups=41 colliding=1452 | L1 True L2 True T1 True modes True
+2026-10-24 21:14:14,830 [llama-3.2/raw] distinct=128061 groups=28 colliding=223 | L1 True L2 True T1 True modes True
+2026-10-24 21:14:14,847 [llama-3.2] done in 49.4s, all checks pass: True
+2026-10-24 21:14:15,363 HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-32B "HTTP/1.1 200 OK"
+2026-10-24 21:14:15,726 HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-32B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-10-24 21:14:16,020 HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-32B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-10-24 21:14:16,614 HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-32B "HTTP/1.1 200 OK"
+2026-10-24 21:14:19,064 [qwen3] V=151669 tables built (4.2s); decode!=raw rows: 1448
+2026-10-24 21:14:45,665 [qwen3/decode] distinct=150149 groups=36 colliding=1556 | L1 True L2 True T1 True modes True
+2026-10-24 21:15:12,673 [qwen3/raw] distinct=151485 groups=25 colliding=209 | L1 True L2 True T1 True modes True
+2026-10-24 21:15:12,693 [qwen3] done in 57.8s, all checks pass: True
+2026-10-24 21:15:13,051 HTTP Request: GET https://huggingface.co/api/models/unsloth/gemma-3-1b-pt "HTTP/1.1 200 OK"
+2026-10-24 21:15:13,485 HTTP Request: GET https://huggingface.co/api/models/unsloth/gemma-3-1b-pt/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-10-24 21:15:13,782 HTTP Request: GET https://huggingface.co/api/models/unsloth/gemma-3-1b-pt/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-10-24 21:15:15,113 HTTP Request: GET https://huggingface.co/api/models/unsloth/gemma-3-1b-pt "HTTP/1.1 200 OK"
+2026-10-24 21:15:19,812 [gemma-3] V=262145 tables built (7.1s); decode!=raw rows: 0
+2026-10-24 21:16:04,550 [gemma-3/decode] distinct=261968 groups=159 colliding=336 | L1 True L2 True T1 True modes True
+2026-10-24 21:16:48,751 [gemma-3/raw] distinct=261968 groups=159 colliding=336 | L1 True L2 True T1 True modes True
+2026-10-24 21:16:48,781 [gemma-3] done in 96.1s, all checks pass: True
+2026-10-24 21:16:49,944 HTTP Request: GET https://huggingface.co/api/models/deepseek-ai/DeepSeek-V3-Base "HTTP/1.1 200 OK"
+2026-10-24 21:16:50,284 HTTP Request: GET https://huggingface.co/api/models/deepseek-ai/DeepSeek-V3-Base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-10-24 21:16:50,628 HTTP Request: GET https://huggingface.co/api/models/deepseek-ai/DeepSeek-V3-Base/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-10-24 21:16:51,448 HTTP Request: GET https://huggingface.co/api/models/deepseek-ai/DeepSeek-V3-Base "HTTP/1.1 200 OK"
+2026-10-24 21:16:53,825 [deepseek-v3] V=128815 tables built (5.0s); decode!=raw rows: 1470
+2026-10-24 21:17:16,922 [deepseek-v3/decode] distinct=127691 groups=50 colliding=1174 | L1 True L2 True T1 True modes True
+2026-10-24 21:17:41,874 [deepseek-v3/raw] distinct=128761 groups=14 colliding=68 | L1 True L2 True T1 True modes True
+2026-10-24 21:17:41,897 [deepseek-v3] done in 53.1s, all checks pass: True
+2026-10-24 21:17:44,403 HTTP Request: GET https://huggingface.co/api/models/openai/gpt-oss-120b "HTTP/1.1 200 OK"
+2026-10-24 21:17:45,307 HTTP Request: GET https://huggingface.co/api/models/openai/gpt-oss-120b/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-10-24 21:17:46,120 HTTP Request: GET https://huggingface.co/api/models/openai/gpt-oss-120b/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-10-24 21:17:49,150 HTTP Request: GET https://huggingface.co/api/models/openai/gpt-oss-120b "HTTP/1.1 200 OK"
+2026-10-24 21:17:53,196 [gpt-oss] V=200019 tables built (11.3s); decode!=raw rows: 1562
+2026-10-24 21:18:32,355 [gpt-oss/decode] distinct=198661 groups=47 colliding=1405 | L1 True L2 True T1 True modes True
+2026-10-24 21:19:08,318 [gpt-oss/raw] distinct=199864 groups=29 colliding=184 | L1 True L2 True T1 True modes True
+2026-10-24 21:19:08,343 [gpt-oss] done in 86.4s, all checks pass: True
+2026-10-24 21:19:08,344 determinism: three fresh CPU runs ...
+2026-10-24 21:22:33,014 ALL PASS

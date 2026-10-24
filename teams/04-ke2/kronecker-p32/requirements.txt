@@ -1,0 +1,11 @@
+# Install torch from the CPU wheel index first:
+#   pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+torch==2.14.1
+kronecker-embeddings @ git+https://github.com/theschoolofai/kronecker-embeddings@d07cb543f03d7a72a7c35bc68cfb795bcb02e1ec
+transformers==5.20.2
+tokenizers==0.23.3
+huggingface_hub==2.3.0
+numpy==2.2.6
+sentencepiece==0.2.2
+protobuf==7.36.2
+safetensors==0.8.0

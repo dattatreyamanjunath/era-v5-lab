@@ -1,0 +1,51 @@
+script_class,tokens,colliding_tokens,colliding_pct,groups_touching,groups_pure,tokens_utf8_replacement,groups_utf8_replacement,tokens_truncation_p32,groups_truncation_p32
+CJK Han (fragment),569,569,100.0,2,0,569,2,0,0
+Hangul (fragment),240,240,100.0,2,0,240,2,0,0
+Continuation bytes only,198,193,97.475,6,4,193,6,0,0
+ASCII,97461,145,0.149,22,22,0,0,145,22
+Whitespace,530,76,14.34,5,5,0,0,76,5
+Mixed (fragment),39,39,100.0,3,0,39,3,0,0
+Punctuation/symbols (fragment),31,30,96.774,2,0,30,2,0,0
+Latin-ext (fragment),31,19,61.29,2,0,19,2,0,0
+Other scripts (fragment),17,17,100.0,3,0,17,3,0,0
+Emoji (fragment),16,16,100.0,2,0,16,2,0,0
+Invalid UTF-8 byte,13,13,100.0,1,0,13,1,0,0
+Arabic (fragment),10,10,100.0,2,0,10,2,0,0
+Greek (fragment),10,10,100.0,2,0,10,2,0,0
+Hangul,2293,9,0.392,3,3,9,3,0,0
+Private use (fragment),8,8,100.0,2,0,8,2,0,0
+Cyrillic (fragment),7,7,100.0,2,0,7,2,0,0
+CJK symbols (fragment),6,5,83.333,2,0,5,2,0,0
+Kana (fragment),5,5,100.0,2,0,5,2,0,0
+Devanagari (fragment),4,4,100.0,2,0,4,2,0,0
+Replacement char,9,3,33.333,3,0,3,3,0,0
+Bengali (fragment),3,3,100.0,2,0,3,2,0,0
+Gujarati (fragment),3,3,100.0,2,0,3,2,0,0
+Gurmukhi (fragment),3,3,100.0,2,0,3,2,0,0
+Kannada (fragment),3,3,100.0,2,0,3,2,0,0
+Tamil (fragment),3,3,100.0,2,0,3,2,0,0
+Telugu (fragment),3,3,100.0,2,0,3,2,0,0
+Thai (fragment),3,3,100.0,2,0,3,2,0,0
+Cyrillic,6513,2,0.031,1,1,0,0,2,1
+CJK Han,4284,2,0.047,1,1,2,1,0,0
+Arabic,3788,2,0.053,1,1,2,1,0,0
+Kana,1019,2,0.196,1,1,2,1,0,0
+Hebrew (fragment),2,2,100.0,2,0,2,2,0,0
+Malayalam (fragment),2,2,100.0,1,0,2,1,0,0
+Combining marks (fragment),1,1,100.0,1,0,1,1,0,0
+Latin-ext,6130,0,0.0,0,0,0,0,0,0
+Thai,1394,0,0.0,0,0,0,0,0,0
+Greek,1393,0,0.0,0,0,0,0,0,0
+Devanagari,1018,0,0.0,0,0,0,0,0,0
+Punctuation/symbols,477,0,0.0,0,0,0,0,0,0
+CJK symbols,375,0,0.0,0,0,0,0,0,0
+Added/control literal,253,0,0.0,0,0,0,0,0,0
+Emoji,28,0,0.0,0,0,0,0,0,0
+Hebrew,22,0,0.0,0,0,0,0,0,0
+Combining marks,12,0,0.0,0,0,0,0,0,0
+Bengali,9,0,0.0,0,0,0,0,0,0
+Other scripts,5,0,0.0,0,0,0,0,0,0
+Tamil,5,0,0.0,0,0,0,0,0,0
+Private use,3,0,0.0,0,0,0,0,0,0
+Special,3,0,0.0,0,0,0,0,0,0
+Malayalam,2,0,0.0,0,0,0,0,0,0
