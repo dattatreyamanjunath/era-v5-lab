@@ -1,0 +1,167 @@
+{
+  "run": "p64",
+  "P": 64,
+  "all_hashes_match": true,
+  "runs": [
+    {
+      "run": 1,
+      "pythonhashseed": "0",
+      "torch_threads": 1,
+      "cuda_visible_devices": "",
+      "device": "cpu",
+      "wall_seconds": 223.9
+    },
+    {
+      "run": 2,
+      "pythonhashseed": "1",
+      "torch_threads": 4,
+      "cuda_visible_devices": "",
+      "device": "cpu",
+      "wall_seconds": 127.3
+    },
+    {
+      "run": 3,
+      "pythonhashseed": "2",
+      "torch_threads": 8,
+      "cuda_visible_devices": "",
+      "device": "cpu",
+      "wall_seconds": 102.3
+    }
+  ],
+  "tokenizers": {
+    "gpt2": {
+      "ids_decoded_per_run": 50257,
+      "decode_table_sha256": {
+        "run1": "0ec79d2ef48432eeced7b788544891df039ad8835df260b70180a8695d015384",
+        "run2": "0ec79d2ef48432eeced7b788544891df039ad8835df260b70180a8695d015384",
+        "run3": "0ec79d2ef48432eeced7b788544891df039ad8835df260b70180a8695d015384",
+        "match": true
+      },
+      "raw_table_sha256": {
+        "run1": "33cc5f9de4daf911ca02e76cde1418777b4429737e99fae9f64c821760e1c1ce",
+        "run2": "33cc5f9de4daf911ca02e76cde1418777b4429737e99fae9f64c821760e1c1ce",
+        "run3": "33cc5f9de4daf911ca02e76cde1418777b4429737e99fae9f64c821760e1c1ce",
+        "match": true
+      },
+      "codec_table_sha256": {
+        "run1": "f8419cdb46a9e212e2e842d22956d9fea69ae5d92a81784fd47b1d2bae9cf365",
+        "run2": "f8419cdb46a9e212e2e842d22956d9fea69ae5d92a81784fd47b1d2bae9cf365",
+        "run3": "f8419cdb46a9e212e2e842d22956d9fea69ae5d92a81784fd47b1d2bae9cf365",
+        "match": true
+      }
+    },
+    "llama-3.2": {
+      "ids_decoded_per_run": 128256,
+      "decode_table_sha256": {
+        "run1": "7d5372cd7d25dc4d813ca1bd998c7b595a39a7ce9d091fdc23a4fc6a153ec1ef",
+        "run2": "7d5372cd7d25dc4d813ca1bd998c7b595a39a7ce9d091fdc23a4fc6a153ec1ef",
+        "run3": "7d5372cd7d25dc4d813ca1bd998c7b595a39a7ce9d091fdc23a4fc6a153ec1ef",
+        "match": true
+      },
+      "raw_table_sha256": {
+        "run1": "d8c70d202337b139f1194a123eee866ce867e9674199546414c59158e3b52fd7",
+        "run2": "d8c70d202337b139f1194a123eee866ce867e9674199546414c59158e3b52fd7",
+        "run3": "d8c70d202337b139f1194a123eee866ce867e9674199546414c59158e3b52fd7",
+        "match": true
+      },
+      "codec_table_sha256": {
+        "run1": "063c51ed28f05a6ced045e053db93eaf98dd8b476b976d9d7c955e8dabbc0cd6",
+        "run2": "063c51ed28f05a6ced045e053db93eaf98dd8b476b976d9d7c955e8dabbc0cd6",
+        "run3": "063c51ed28f05a6ced045e053db93eaf98dd8b476b976d9d7c955e8dabbc0cd6",
+        "match": true
+      }
+    },
+    "qwen3": {
+      "ids_decoded_per_run": 151669,
+      "decode_table_sha256": {
+        "run1": "6022214773e806ba281c5bfd094546f14173a100b8b9a9db40edb0bcabbddaed",
+        "run2": "6022214773e806ba281c5bfd094546f14173a100b8b9a9db40edb0bcabbddaed",
+        "run3": "6022214773e806ba281c5bfd094546f14173a100b8b9a9db40edb0bcabbddaed",
+        "match": true
+      },
+      "raw_table_sha256": {
+        "run1": "927e0f0063c4443f9f016f8ebe328e7ab1105f1d5c6b6b7852711956dbfab1ce",
+        "run2": "927e0f0063c4443f9f016f8ebe328e7ab1105f1d5c6b6b7852711956dbfab1ce",
+        "run3": "927e0f0063c4443f9f016f8ebe328e7ab1105f1d5c6b6b7852711956dbfab1ce",
+        "match": true
+      },
+      "codec_table_sha256": {
+        "run1": "d82d922edb8e9b51c80c711ba67a2b99bcc627628403b00d98162652318534bd",
+        "run2": "d82d922edb8e9b51c80c711ba67a2b99bcc627628403b00d98162652318534bd",
+        "run3": "d82d922edb8e9b51c80c711ba67a2b99bcc627628403b00d98162652318534bd",
+        "match": true
+      }
+    },
+    "gemma-3": {
+      "ids_decoded_per_run": 262145,
+      "decode_table_sha256": {
+        "run1": "a9183760fd6cf35e29eb6c9965917f5a0c7a5873a97860a0e7655d7e5c322960",
+        "run2": "a9183760fd6cf35e29eb6c9965917f5a0c7a5873a97860a0e7655d7e5c322960",
+        "run3": "a9183760fd6cf35e29eb6c9965917f5a0c7a5873a97860a0e7655d7e5c322960",
+        "match": true
+      },
+      "raw_table_sha256": {
+        "run1": "a9183760fd6cf35e29eb6c9965917f5a0c7a5873a97860a0e7655d7e5c322960",
+        "run2": "a9183760fd6cf35e29eb6c9965917f5a0c7a5873a97860a0e7655d7e5c322960",
+        "run3": "a9183760fd6cf35e29eb6c9965917f5a0c7a5873a97860a0e7655d7e5c322960",
+        "match": true
+      },
+      "codec_table_sha256": {
+        "run1": "72ebe0048df77ee2bf1f0f644a335c1ecd632bcb67f5c09e7769fab3e059b938",
+        "run2": "72ebe0048df77ee2bf1f0f644a335c1ecd632bcb67f5c09e7769fab3e059b938",
+        "run3": "72ebe0048df77ee2bf1f0f644a335c1ecd632bcb67f5c09e7769fab3e059b938",
+        "match": true
+      }
+    },
+    "deepseek-v3": {
+      "ids_decoded_per_run": 128815,
+      "decode_table_sha256": {
+        "run1": "150adce1f2c8fb895acb1d4b87f37ad16c867512829a3f1c9594a10c0262cce3",
+        "run2": "150adce1f2c8fb895acb1d4b87f37ad16c867512829a3f1c9594a10c0262cce3",
+        "run3": "150adce1f2c8fb895acb1d4b87f37ad16c867512829a3f1c9594a10c0262cce3",
+        "match": true
+      },
+      "raw_table_sha256": {
+        "run1": "f06c29247c2f237eb96bccc8a3f5c92d276debf4521f0c1bb0d52b1563e52c4e",
+        "run2": "f06c29247c2f237eb96bccc8a3f5c92d276debf4521f0c1bb0d52b1563e52c4e",
+        "run3": "f06c29247c2f237eb96bccc8a3f5c92d276debf4521f0c1bb0d52b1563e52c4e",
+        "match": true
+      },
+      "codec_table_sha256": {
+        "run1": "9864af201e2236cba59497c87feafd31579a0fad7a31f6db9d72059634ad9b62",
+        "run2": "9864af201e2236cba59497c87feafd31579a0fad7a31f6db9d72059634ad9b62",
+        "run3": "9864af201e2236cba59497c87feafd31579a0fad7a31f6db9d72059634ad9b62",
+        "match": true
+      }
+    },
+    "gpt-oss": {
+      "ids_decoded_per_run": 200019,
+      "decode_table_sha256": {
+        "run1": "25aa217b0c832b61218c9c923dcaf9cc2da08aaca749453d9637a5f298457921",
+        "run2": "25aa217b0c832b61218c9c923dcaf9cc2da08aaca749453d9637a5f298457921",
+        "run3": "25aa217b0c832b61218c9c923dcaf9cc2da08aaca749453d9637a5f298457921",
+        "match": true
+      },
+      "raw_table_sha256": {
+        "run1": "a6c11636348fd47fd36c8d61291ab1548dbd8401adebdc9a831a4137fe5102cb",
+        "run2": "a6c11636348fd47fd36c8d61291ab1548dbd8401adebdc9a831a4137fe5102cb",
+        "run3": "a6c11636348fd47fd36c8d61291ab1548dbd8401adebdc9a831a4137fe5102cb",
+        "match": true
+      },
+      "codec_table_sha256": {
+        "run1": "d203299a93597e2bd4979b65726cf399c155dc918b52389ac94e5af6476fb78a",
+        "run2": "d203299a93597e2bd4979b65726cf399c155dc918b52389ac94e5af6476fb78a",
+        "run3": "d203299a93597e2bd4979b65726cf399c155dc918b52389ac94e5af6476fb78a",
+        "match": true
+      }
+    }
+  },
+  "environment": {
+    "python": "3.10.12",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "torch": "2.14.1",
+    "transformers": "5.20.2",
+    "tokenizers": "0.23.3"
+  }
+}

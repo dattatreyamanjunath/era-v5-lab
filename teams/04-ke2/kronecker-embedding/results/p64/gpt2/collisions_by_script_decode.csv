@@ -1,0 +1,39 @@
+script_class,tokens,colliding_tokens,colliding_pct,groups_touching,groups_pure,tokens_utf8_replacement,groups_utf8_replacement,tokens_truncation,groups_truncation
+CJK Han (fragment),104,104,100.0,4,0,104,4,0,0
+Continuation bytes only,91,91,100.0,2,0,91,2,0,0
+Mixed (fragment),23,23,100.0,2,0,23,2,0,0
+Punctuation/symbols (fragment),17,17,100.0,2,0,17,2,0,0
+Latin-ext (fragment),16,16,100.0,2,0,16,2,0,0
+Invalid UTF-8 byte,13,13,100.0,1,0,13,1,0,0
+Emoji (fragment),12,12,100.0,2,0,12,2,0,0
+Hangul (fragment),7,7,100.0,2,0,7,2,0,0
+Other scripts (fragment),7,7,100.0,1,0,7,1,0,0
+Arabic (fragment),6,6,100.0,2,0,6,2,0,0
+Kana (fragment),6,6,100.0,2,0,6,2,0,0
+Kana,133,5,3.759,1,1,5,1,0,0
+Cyrillic (fragment),5,5,100.0,2,0,5,2,0,0
+Greek (fragment),5,5,100.0,2,0,5,2,0,0
+CJK Han,50,4,8.0,2,2,4,2,0,0
+Replacement char,8,4,50.0,4,0,4,4,0,0
+Devanagari (fragment),3,3,100.0,2,0,3,2,0,0
+Gurmukhi (fragment),3,3,100.0,2,0,3,2,0,0
+Latin-ext,148,2,1.351,1,1,0,0,2,1
+Hebrew (fragment),2,2,100.0,2,0,2,2,0,0
+Private use (fragment),2,2,100.0,1,0,2,1,0,0
+Thai (fragment),2,2,100.0,1,0,2,1,0,0
+Bengali (fragment),1,1,100.0,1,0,1,1,0,0
+CJK symbols (fragment),1,1,100.0,1,0,1,1,0,0
+Combining marks (fragment),1,1,100.0,1,0,1,1,0,0
+ASCII,49372,0,0.0,0,0,0,0,0,0
+Punctuation/symbols,96,0,0.0,0,0,0,0,0,0
+Whitespace,23,0,0.0,0,0,0,0,0,0
+Arabic,22,0,0.0,0,0,0,0,0,0
+Greek,22,0,0.0,0,0,0,0,0,0
+Cyrillic,18,0,0.0,0,0,0,0,0,0
+Hebrew,12,0,0.0,0,0,0,0,0,0
+CJK symbols,11,0,0.0,0,0,0,0,0,0
+Emoji,10,0,0.0,0,0,0,0,0,0
+Hangul,2,0,0.0,0,0,0,0,0,0
+Combining marks,1,0,0.0,0,0,0,0,0,0
+Devanagari,1,0,0.0,0,0,0,0,0,0
+Special,1,0,0.0,0,0,0,0,0,0

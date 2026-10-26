@@ -10,7 +10,9 @@ Terms:
 - **Colliding IDs** is the number of IDs in all groups.
 - **Lost IDs** is `V − distinct rows`: how many IDs do not get an embedding of their own. Each group of size `n` loses `n − 1`.
 
-Every number here comes from `results/` (rendered in [`results/tables.md`](results/tables.md)). The cause of every single group is listed in `results/tables.md` and in `results/<tokenizer>/groups_{decode,raw}.jsonl`.
+For the same analysis at P = 64, see [p64.md](p64.md).
+
+Every number here comes from `results/p32/` (rendered in [`results/p32/tables.md`](results/p32/tables.md)). The cause of every single group is listed in `results/p32/tables.md` and in `results/p32/<tokenizer>/groups_{decode,raw}.jsonl`.
 
 ## Overview
 
@@ -29,18 +31,18 @@ Every number here comes from `results/` (rendered in [`results/tables.md`](resul
 
 ## Causes
 
-Each group gets one cause. The rules are applied in this order (`src/collisions.py`):
+Each group gets one cause. The rules are applied in this order (`kron_audit/causes.py`, `DEFAULT_RULES`):
 
 | cause | rule | example |
 |---|---|---|
 | `utf8_replacement` | the shared row contains U+FFFD (`EF BF BD`) and at least one member's true bytes are not valid UTF-8 | GPT-2 IDs 94, 95, 96 … (bytes `A1`, `A2`, `A3` …) all decode to `�` |
-| `truncation_p32` | members' true bytes differ, but their first ≤ 32 bytes (cut on a character boundary) are equal | GPT-2 IDs 3880, 10097, 43801, 47232 = 32, 64, 56 and 48 dashes |
+| `truncation` | members' true bytes differ, but their first ≤ 32 bytes (cut on a character boundary) are equal | GPT-2 IDs 3880, 10097, 43801, 47232 = 32, 64, 56 and 48 dashes |
 | `byte_fallback_alias` | members have identical true bytes, and one of them is a SentencePiece `<0xNN>` token | Gemma ID 248 `<0x0A>` and ID 107 `\n` |
 | `decoder_normalization`, `special_literal_clash`, `duplicate_vocab_entry`, `empty_bytes` | (see code) | **never occurred** |
 
 Groups and IDs per cause:
 
-| tokenizer | decode: utf8_replacement | decode: truncation_p32 | decode: byte_fallback_alias | raw: truncation_p32 | raw: byte_fallback_alias |
+| tokenizer | decode: utf8_replacement | decode: truncation | decode: byte_fallback_alias | raw: truncation | raw: byte_fallback_alias |
 |---|---|---|---|---|---|
 | gpt2 | 7 groups / 340 IDs | 7 / 17 | – | 7 / 17 | – |
 | llama-3.2 | 13 / 1,229 | 28 / 223 | – | 28 / 223 | – |
@@ -60,14 +62,14 @@ Groups and IDs per cause:
    - Every token with the same valid context and the same number of broken spots then decodes to the same string: `�`, ` �`, `��`, `の�`, `�다` …
    - The true bytes were all different. The decoder threw the difference away.
    - This is the largest cause by far, at 340–1,347 IDs per byte-level tokenizer.
-2. **`truncation_p32` (both tables).** `P = 32` keeps only the first 32 bytes, so tokens that agree on those bytes become one row. Two kinds of token do this:
+2. **`truncation` (both tables).** `P = 32` keeps only the first 32 bytes, so tokens that agree on those bytes become one row. Two kinds of token do this:
    - **Long runs**, the large majority: whitespace, `----`, `////`, `/****`, `====`, `____`, `....`. They exist in 32-, 48- and 64-byte versions, and all of them map to the same 32-byte row.
    - **Long words in scripts with 3-byte characters:** Bengali, Devanagari, Tamil and Malayalam (Gemma); Thai, Georgian, Malayalam and Gujarati (gpt-oss). Eleven characters already fill 32 bytes. For example, `▁বিশ্ববিদ্যাল`, `▁বিশ্ববিদ্যালয়` and `▁বিশ্ববিদ্যালয়ের` are 37, 40 and 46 bytes, and all share the row ` বিশ্ববিদ্য`.
 3. **`byte_fallback_alias` (Gemma only).** Gemma's SentencePiece vocabulary has 256 byte-fallback tokens `<0x00>`–`<0xFF>`. For 110 of those bytes it also has an ordinary token for the same single character: all 95 printable ASCII characters plus 15 control characters (e.g. `\n`, `\t`). The pair has the same true bytes, so any byte table collides them. The other 146 byte-fallback tokens (mostly `80`–`FF`) have no ordinary twin and stay unique.
 
 ## Colliding IDs per script class
 
-Each token's class comes from its true bytes (`src/script_class.py`).
+Each token's class comes from its true bytes (`kron_audit/script_class.py`).
 - A token that holds no complete character (a partial UTF-8 piece) is classed by the code-point range its lead byte allows. For example, `E0 A4` can only begin U+0900–U+093F, so it is Devanagari.
 - Below, such fragments are folded into their script.
 - **Continuation bytes only** means the token has no lead byte at all, e.g. `A3 8F`.
@@ -147,15 +149,15 @@ Each token's class comes from its true bytes (`src/script_class.py`).
 | llama-3.2 | decode | 434 | utf8_replacement | ` �` | space + a partial character, e.g. `Ġ` + `E2 80`, `Ġ` + `D0` |
 | deepseek-v3 | decode | 10, 10, 10, 9 … (24 groups) | utf8_replacement | `�ר`, `�ה`, `�ת`, `�ל` … | Hebrew letter + the tail byte of the previous letter; the tail decodes to U+FFFD |
 | llama-3.2 | decode | 5 | utf8_replacement | `�다` | Korean `다` preceded by different stray bytes |
-| llama-3.2 / qwen3 | both | 60 | truncation_p32 | 32 spaces | space runs of 32 bytes and longer |
-| gpt2 | both | 3 | truncation_p32 | `ÃÂÃÂ…` | mojibake (double-encoded UTF-8) runs of 32, 64 and 128 bytes |
-| gemma-3 | both | 5 | truncation_p32 | ` বিশ্ববিদ্য` | Bengali "university" and its inflections, 37–46 bytes |
-| gpt-oss | both | 3 | truncation_p32 | ` საქართველო` | Georgian "Georgia" and two longer forms |
-| deepseek-v3 | both | 2 | truncation_p32 | `习近平新时代中国特色` | two Chinese political phrases, 42 and 48 bytes |
+| llama-3.2 / qwen3 | both | 60 | truncation | 32 spaces | space runs of 32 bytes and longer |
+| gpt2 | both | 3 | truncation | `ÃÂÃÂ…` | mojibake (double-encoded UTF-8) runs of 32, 64 and 128 bytes |
+| gemma-3 | both | 5 | truncation | ` বিশ্ববিদ্য` | Bengali "university" and its inflections, 37–46 bytes |
+| gpt-oss | both | 3 | truncation | ` საქართველო` | Georgian "Georgia" and two longer forms |
+| deepseek-v3 | both | 2 | truncation | `习近平新时代中国特色` | two Chinese political phrases, 42 and 48 bytes |
 | gemma-3 | both | 2 | byte_fallback_alias | `\n` | IDs 107 (`\n`) and 248 (`<0x0A>`) |
 
 ## What this means
 
-1. **Build the byte buffer from raw bytes, not from `decode`.** It removes every `utf8_replacement` collision, cutting lost IDs by 86–97% on the five byte-level tokenizers (343 → 10, 1,411 → 195, 1,520 → 184, 1,124 → 54, 1,358 → 155). It is a byte-table change only; the codec and the lemmas stay the same. For byte-level BPE, the raw bytes are one inverse lookup per piece character (`src/tables.py: raw_full`).
+1. **Build the byte buffer from raw bytes, not from `decode`.** It removes every `utf8_replacement` collision, cutting lost IDs by 86–97% on the five byte-level tokenizers (343 → 10, 1,411 → 195, 1,520 → 184, 1,124 → 54, 1,358 → 155). It is a byte-table change only; the codec and the lemmas stay the same. For byte-level BPE, the raw bytes are one inverse lookup per piece character (`kron_audit/raw_bytes.py`).
 2. **Truncation at P = 32 still merges 54–195 IDs per tokenizer**, mostly long punctuation and whitespace runs, plus long Indic, Thai and Georgian words. The paper's "distinct embeddings after truncation" sentence should be qualified (Theorem 1(c)). If those words matter, the options are a larger `P` or a tie-break for tokens over 32 bytes.
 3. **Gemma's byte-fallback aliases (110 pairs) can't be removed** by changing the byte table. They are the only collisions where the two IDs truly mean the same bytes.

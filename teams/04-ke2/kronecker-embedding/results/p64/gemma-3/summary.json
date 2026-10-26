@@ -1,0 +1,904 @@
+{
+  "schema": 2,
+  "digest": "e133359121142e670fdb993faa3c45c2ea81f4b9a2ad3b98db4cdfe3c868a443",
+  "run": "p64",
+  "codec": {
+    "pos_dim": 64,
+    "char_dim": 256,
+    "length_normalize": true,
+    "z_normalize": true,
+    "eps": 1e-06
+  },
+  "tokenizer": {
+    "name": "gemma-3",
+    "source": "unsloth/gemma-3-1b-pt",
+    "source_kind": "hf",
+    "revision": null,
+    "family": "sentencepiece",
+    "family_detected": true,
+    "tokenizer_class": "GemmaTokenizer",
+    "snapshot": "34a98bf3eaecc08c699516f625eb5e56e4c5d99d",
+    "tokenizer_json_sha256": "4667f2089529e8e7657cfb6d1c19910ae71ff5f28aa7ab2ff2763330affad795"
+  },
+  "tables": {
+    "V": 262145,
+    "P": 64,
+    "family": "sentencepiece",
+    "decode_table_sha256": "a9183760fd6cf35e29eb6c9965917f5a0c7a5873a97860a0e7655d7e5c322960",
+    "raw_table_sha256": "a9183760fd6cf35e29eb6c9965917f5a0c7a5873a97860a0e7655d7e5c322960",
+    "decode_repacked_equals_repo_buffer": true,
+    "truncation_rule_check": {
+      "valid_utf8_tokens_over_P": 0,
+      "boundary_equals_utf8_safe": 0
+    },
+    "raw_kind_counts": {
+      "byte_fallback": 256,
+      "model_sentencepiece": 261881,
+      "special": 8
+    },
+    "rows_where_decode_differs_from_raw": 0,
+    "raw_len_over_P": 0,
+    "decode_len_over_P": 0,
+    "raw_invalid_utf8": 128
+  },
+  "decode": {
+    "V": 262145,
+    "P": 64,
+    "distinct_rows": 262035,
+    "ids_without_unique_row": 110,
+    "collision_groups": 110,
+    "colliding_tokens": 220,
+    "largest_group": 2,
+    "by_cause": {
+      "byte_fallback_alias": {
+        "groups": 110,
+        "tokens": 220
+      }
+    },
+    "by_script": [
+      {
+        "script_class": "ASCII",
+        "tokens": 150314,
+        "colliding_tokens": 212,
+        "colliding_pct": 0.141,
+        "groups_touching": 106,
+        "groups_pure": 106,
+        "tokens_byte_fallback_alias": 212,
+        "groups_byte_fallback_alias": 106
+      },
+      {
+        "script_class": "Whitespace",
+        "tokens": 104,
+        "colliding_tokens": 8,
+        "colliding_pct": 7.692,
+        "groups_touching": 4,
+        "groups_pure": 4,
+        "tokens_byte_fallback_alias": 8,
+        "groups_byte_fallback_alias": 4
+      },
+      {
+        "script_class": "CJK Han",
+        "tokens": 20119,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Devanagari",
+        "tokens": 13750,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Cyrillic",
+        "tokens": 13398,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Latin-ext",
+        "tokens": 13017,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Bengali",
+        "tokens": 9979,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Arabic",
+        "tokens": 8454,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Other scripts",
+        "tokens": 5697,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Hangul",
+        "tokens": 4678,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Kana",
+        "tokens": 4114,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Tamil",
+        "tokens": 3850,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Thai",
+        "tokens": 2177,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Malayalam",
+        "tokens": 1955,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Telugu",
+        "tokens": 1782,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Greek",
+        "tokens": 1511,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Emoji",
+        "tokens": 1386,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Gujarati",
+        "tokens": 1350,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Kannada",
+        "tokens": 1267,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Punctuation/symbols",
+        "tokens": 1033,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Hebrew",
+        "tokens": 831,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "CJK symbols",
+        "tokens": 405,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Private use",
+        "tokens": 310,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Gurmukhi",
+        "tokens": 267,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Combining marks",
+        "tokens": 130,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Oriya",
+        "tokens": 125,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Continuation bytes only",
+        "tokens": 64,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Mixed (fragment)",
+        "tokens": 17,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Invalid UTF-8 byte",
+        "tokens": 13,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Latin-ext (fragment)",
+        "tokens": 10,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Special",
+        "tokens": 8,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Replacement char",
+        "tokens": 6,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "CJK Han (fragment)",
+        "tokens": 5,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Arabic (fragment)",
+        "tokens": 4,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Cyrillic (fragment)",
+        "tokens": 4,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Other scripts (fragment)",
+        "tokens": 4,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Greek (fragment)",
+        "tokens": 2,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Hangul (fragment)",
+        "tokens": 2,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Combining marks (fragment)",
+        "tokens": 1,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Hebrew (fragment)",
+        "tokens": 1,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Private use (fragment)",
+        "tokens": 1,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      }
+    ]
+  },
+  "raw": {
+    "V": 262145,
+    "P": 64,
+    "distinct_rows": 262035,
+    "ids_without_unique_row": 110,
+    "collision_groups": 110,
+    "colliding_tokens": 220,
+    "largest_group": 2,
+    "by_cause": {
+      "byte_fallback_alias": {
+        "groups": 110,
+        "tokens": 220
+      }
+    },
+    "by_script": [
+      {
+        "script_class": "ASCII",
+        "tokens": 150314,
+        "colliding_tokens": 212,
+        "colliding_pct": 0.141,
+        "groups_touching": 106,
+        "groups_pure": 106,
+        "tokens_byte_fallback_alias": 212,
+        "groups_byte_fallback_alias": 106
+      },
+      {
+        "script_class": "Whitespace",
+        "tokens": 104,
+        "colliding_tokens": 8,
+        "colliding_pct": 7.692,
+        "groups_touching": 4,
+        "groups_pure": 4,
+        "tokens_byte_fallback_alias": 8,
+        "groups_byte_fallback_alias": 4
+      },
+      {
+        "script_class": "CJK Han",
+        "tokens": 20119,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Devanagari",
+        "tokens": 13750,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Cyrillic",
+        "tokens": 13398,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Latin-ext",
+        "tokens": 13017,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Bengali",
+        "tokens": 9979,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Arabic",
+        "tokens": 8454,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Other scripts",
+        "tokens": 5697,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Hangul",
+        "tokens": 4678,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Kana",
+        "tokens": 4114,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Tamil",
+        "tokens": 3850,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Thai",
+        "tokens": 2177,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Malayalam",
+        "tokens": 1955,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Telugu",
+        "tokens": 1782,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Greek",
+        "tokens": 1511,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Emoji",
+        "tokens": 1386,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Gujarati",
+        "tokens": 1350,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Kannada",
+        "tokens": 1267,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Punctuation/symbols",
+        "tokens": 1033,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Hebrew",
+        "tokens": 831,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "CJK symbols",
+        "tokens": 405,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Private use",
+        "tokens": 310,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Gurmukhi",
+        "tokens": 267,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Combining marks",
+        "tokens": 130,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Oriya",
+        "tokens": 125,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Continuation bytes only",
+        "tokens": 64,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Mixed (fragment)",
+        "tokens": 17,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Invalid UTF-8 byte",
+        "tokens": 13,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Latin-ext (fragment)",
+        "tokens": 10,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Special",
+        "tokens": 8,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Replacement char",
+        "tokens": 6,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "CJK Han (fragment)",
+        "tokens": 5,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Arabic (fragment)",
+        "tokens": 4,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Cyrillic (fragment)",
+        "tokens": 4,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Other scripts (fragment)",
+        "tokens": 4,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Greek (fragment)",
+        "tokens": 2,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Hangul (fragment)",
+        "tokens": 2,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Combining marks (fragment)",
+        "tokens": 1,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Hebrew (fragment)",
+        "tokens": 1,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      },
+      {
+        "script_class": "Private use (fragment)",
+        "tokens": 1,
+        "colliding_tokens": 0,
+        "colliding_pct": 0.0,
+        "groups_touching": 0,
+        "groups_pure": 0,
+        "tokens_byte_fallback_alias": 0,
+        "groups_byte_fallback_alias": 0
+      }
+    ]
+  },
+  "paper_truncation_claim": {
+    "P": 64,
+    "tokens_longer_than_P": 0,
+    "of_which_share_row_with_another_token": 0,
+    "claim_holds": true
+  }
+}

@@ -1,87 +1,130 @@
-# kronecker-p32: decode vs raw byte tables for Kronecker Embeddings at P = 32
+# kronecker-embedding: byte-table and collision audit for Kronecker Embeddings
 
-Team 04-ke2. An audit of the byte tables that feed
-[theschoolofai/kronecker-embeddings](https://github.com/theschoolofai/kronecker-embeddings)
-(commit `d07cb54`, package 0.1.1; paper arXiv 2605.29459) at `pos_dim = P = 32`. It covers the six tokenizers of paper Table 3.
+Team 04-ke2. `kron_audit` is a configurable tool that checks, for any `pos_dim` P and any tokenizer, which token IDs end up with the same embedding in [theschoolofai/kronecker-embeddings](https://github.com/theschoolofai/kronecker-embeddings) (commit `d07cb54`, package 0.1.1; paper arXiv 2605.29459), and why. This folder holds the tool and two finished runs on the six tokenizers of paper Table 3: P = 32 and P = 64.
 
 ## Results in one page
 
-1. **The repo's byte table merges many token IDs.** It is built with `tokenizer.decode([id])`. Every byte-level BPE token that is a piece of a multi-byte character decodes to U+FFFD (`�`), so hundreds of such tokens share one byte row, and hence one embedding.
-   - Lost IDs (IDs without an embedding of their own): GPT-2 343, Llama-3.2 1,411, Qwen3 1,520, DeepSeek-V3 1,124, gpt-oss 1,358. Gemma-3 loses 177, for other reasons.
+1. **The repo's byte table merges many token IDs, at any P.** It is built with `tokenizer.decode([id])`. Every byte-level BPE token that is a piece of a multi-byte character decodes to U+FFFD (`�`), so hundreds of such tokens share one byte row, and hence one embedding.
+   - Lost IDs (IDs without an embedding of their own): 343–1,520 per byte-level tokenizer at P=32, and 334–1,436 at P=64.
    - The largest single group is 1,067 Qwen3 IDs, all mapped to `�`.
-   - Most of these are CJK, Hangul, Hebrew and Indic fragments. → [collisions.md](collisions.md)
-2. **A raw byte table fixes most of it.** It reads each token's true bytes from its vocab piece.
-   - Lost IDs drop by 86–97%: 10 / 195 / 184 / 54 / 155.
-   - Gemma's tables are already identical (177 either way).
-3. **What remains is truncation at 32 bytes, plus Gemma's byte-fallback twins.**
-   - **Truncation:** long runs of spaces, `----` or `////`, and long words in 3-byte scripts (Bengali, Devanagari, Tamil, Thai, Malayalam, Georgian) share their first 32 bytes.
-   - **This contradicts the paper.** It says truncated tokens "still receive distinct embeddings"; that is false for every tokenizer tested. For example, 210 of Llama-3.2's 231 tokens longer than 32 bytes share a row with another token.
-   - **Gemma's byte-fallback twins:** 110 pairs like `<0x0A>` and `\n`, which have the same bytes.
-4. **The codec is not the problem.** [proof.md](proof.md) proves:
-   - Lemma 1: the pre-norm codec is injective, and its norm is exactly 1.
-   - Lemma 2: z-norm keeps it injective, in exact arithmetic and in fp32.
-   - Theorem 1: two IDs share a codec row ⟺ they share a byte row, in both `dynamic` and `cached` modes.
+2. **A raw byte table fixes most of it.** It reads each token's true bytes from the vocab piece. On the five byte-level tokenizers it cuts lost IDs by 86–97% at P=32, and by 92–99.7% at P=64.
+3. **What remains is truncation at P, plus Gemma's 110 byte-fallback twins** (e.g. `<0x0A>` and `\n`).
+   - At P=32, truncation merges long runs (`----`, `////`, spaces) and long Bengali, Tamil, Devanagari, Thai and Georgian words.
+   - At P=64, every word-like collision is gone; only long runs remain.
+   - The paper's "truncated tokens still receive distinct embeddings" fails for all six tokenizers at P=32. At P=64 it fails for five; it holds only for Gemma-3, which has no token over 64 bytes.
+4. **The codec is not the problem.** [proof.md](proof.md) proves, for every P, that two IDs share a codec row ⟺ they share a byte row. It is checked on all 921,161 rows of both tables, at both P.
+5. **Everything is deterministic.** Every token ID was decoded on CPU in three fresh processes per P, and all hashes match. The rewrite also reproduces the first P=32 audit bit for bit. → [determinism.md](determinism.md)
 
-   Each is checked numerically on all 921,161 rows of both tables: every row is inverted exactly, and every collision group maps to exactly one codec hash.
-5. **Everything is deterministic.** Every token ID was decoded on CPU in three fresh processes, with different hash seeds and thread counts, and all 18 table and codec hashes match. → [determinism.md](determinism.md)
+| lost IDs | gpt2 | llama-3.2 | qwen3 | gemma-3 | deepseek-v3 | gpt-oss |
+|---|---|---|---|---|---|---|
+| decode table, P=32 | 343 | 1,411 | 1,520 | 177 | 1,124 | 1,358 |
+| raw table, P=32 | 10 | 195 | 184 | 177 | 54 | 155 |
+| decode table, P=64 | 334 | 1,316 | 1,436 | 110 | 1,079 | 1,275 |
+| raw table, P=64 | 1 | 100 | 100 | 110 | 9 | 72 |
+
+**What to do.** Build the byte buffer from raw bytes. It's free at training time and helps at any P. Going from P=32 to P=64 frees another 383 IDs across the six tokenizers, at the cost of doubling the projection (D = 8,192 → 16,384).
+
+**Documents:**
+- [collisions.md](collisions.md): the P=32 analysis.
+- [p64.md](p64.md): what changes at P=64.
+- [proof.md](proof.md): Lemma 1, Lemma 2, Theorem 1.
+- [determinism.md](determinism.md): the three decode runs per P.
+- [ARCHITECTURE.md](ARCHITECTURE.md): how the tool is built and extended.
+
+## Quick start
+
+CPU only. The venv, the tables and the Hugging Face cache stay local.
+
+```bash
+cd teams/04-ke2/kronecker-embedding
+python3.10 -m venv .venv
+.venv/bin/pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+.venv/bin/pip install -r requirements-dev.txt
+
+.venv/bin/python -m kron_audit run --config configs/p64.yaml          # full run
+.venv/bin/python -m kron_audit compare results/p32 results/p64      # side-by-side report
+.venv/bin/python -m pytest                                          # 57 offline tests
+```
+
+`run` options:
+- `--pos-dim 48` tries another P without a new file.
+- `--tokenizers gpt2,qwen3` runs a subset.
+- `--name my-run` writes to `results/my-run/`.
+- `--skip-determinism`, `--force`, and `--max-workers N` (tokenizers in parallel).
+
+The exit code is non-zero if any check fails.
+
+On this laptop (Apple Silicon, 8 GB), the six tokenizers take about 10 minutes of analysis plus 4 minutes of determinism runs at P=32, and 16 + 8 minutes at P=64. Tokenizers that are already up to date are skipped.
+
+## Configuration
+
+One YAML file describes a run ([`configs/p32.yaml`](configs/p32.yaml), [`configs/p64.yaml`](configs/p64.yaml), [`configs/example-local.yaml`](configs/example-local.yaml)):
+
+```yaml
+name: p64                       # results go to results/p64/
+codec:                          # passed to kronecker_codec / KroneckerEmbedding
+  pos_dim: 64                   # P; D = char_dim * P
+  char_dim: 256
+  length_normalize: true
+  z_normalize: true
+  eps: 1.0e-6
+tokenizers:
+  - {name: gpt2, source: openai-community/gpt2}                 # Hugging Face repo
+  - {name: mine, source: ../tok/tokenizer.json}                 # local file (relative to this YAML)
+  - {name: pinned, source: Qwen/Qwen3-32B, revision: <commit>, family: auto}
+determinism:
+  enabled: true
+  runs: [{seed: 0, threads: 1}, {seed: 1, threads: 4}, {seed: 2, threads: 8}]
+compute:
+  chunk_rows: auto              # codec rows per chunk; auto ≈ 128 MB per chunk
+  mode_check_random_ids: 4096
+  max_workers: 1
+```
+
+**Adding a tokenizer** means adding one line. `source` can be:
+- a Hugging Face repo ID (optionally with `revision`);
+- a local folder holding `tokenizer.json` (and `tokenizer_config.json` for special tokens);
+- a path to one `tokenizer.json`.
+
+The family (`bbpe`, `sentencepiece`, `wordpiece`, otherwise `decode`) is detected from the tokenizer and recorded in each summary. `family:` overrides it. To support a new family, or to add a collision cause, see [ARCHITECTURE.md](ARCHITECTURE.md#extension-points).
 
 ## The two tables
 
-Both are `uint8 [V, 32]` plus `int16 [V]` lengths. Both are cut to at most 32 bytes on a UTF-8 character boundary.
+Both are `uint8 [V, P]` plus `int16 [V]` lengths, cut to at most P bytes on a UTF-8 character boundary.
 
 | table | how each row is built |
 |---|---|
-| decode | the repo's own `kronecker_embeddings.build_byte_buffer` (`tokenizer.decode([id])`, `<0xNN>` → byte, special tokens → literal text) |
-| raw | special token → literal text (same as the repo). `<0xNN>` → the byte. Added token that the model can only match literally → its UTF-8 text. Byte-level BPE piece → invert GPT-2's `bytes_to_unicode` map. SentencePiece piece → `▁` becomes a space. |
+| decode | the repo's own `kronecker_embeddings.build_byte_buffer(tok, pos_dim=P)` (`tokenizer.decode([id])`, `<0xNN>` → byte, special tokens → literal text) |
+| raw | special token → literal text (same as the repo). `<0xNN>` → the byte. Added token the model can only match literally → its UTF-8 text. Otherwise a per-family strategy: byte-level BPE inverts GPT-2's `bytes_to_unicode`; SentencePiece maps `▁` → space; WordPiece strips `##`. |
 
-**Why the raw table needs its own truncation rule.** The repo's `utf8_safe_truncate` returns `b""` for a byte string longer than 32 bytes that is not valid UTF-8. So the raw table instead cuts at 32 and backs off while the cut lands on a continuation byte. On valid UTF-8 the two rules agree on every token (checked).
+**Why the raw table needs its own truncation rule.** The repo's `utf8_safe_truncate` returns `b""` for a byte string longer than P that is not valid UTF-8. So the raw table cuts at P and backs off while the cut lands on a continuation byte. On valid UTF-8 the two rules agree; this is checked on every token and in the tests.
 
-## Tokenizers
+## Tokenizers in the two runs
 
 | name | Hugging Face repo | V | family |
 |---|---|---|---|
-| gpt2 | openai-community/gpt2 | 50,257 | byte-level BPE |
-| llama-3.2 | unsloth/Llama-3.2-1B (ungated mirror of meta-llama) | 128,256 | byte-level BPE |
-| qwen3 | Qwen/Qwen3-32B | 151,669 | byte-level BPE |
-| gemma-3 | unsloth/gemma-3-1b-pt (ungated mirror of google) | 262,145 | SentencePiece BPE + byte fallback |
-| deepseek-v3 | deepseek-ai/DeepSeek-V3-Base | 128,815 | byte-level BPE |
-| gpt-oss | openai/gpt-oss-120b (o200k_harmony) | 200,019 | byte-level BPE |
+| gpt2 | openai-community/gpt2 | 50,257 | bbpe |
+| llama-3.2 | unsloth/Llama-3.2-1B (ungated mirror of meta-llama) | 128,256 | bbpe |
+| qwen3 | Qwen/Qwen3-32B | 151,669 | bbpe |
+| gemma-3 | unsloth/gemma-3-1b-pt (ungated mirror of google) | 262,145 | sentencepiece |
+| deepseek-v3 | deepseek-ai/DeepSeek-V3-Base | 128,815 | bbpe |
+| gpt-oss | openai/gpt-oss-120b (o200k_harmony) | 200,019 | bbpe |
 
-## Files
+## Layout
 
 | path | what |
 |---|---|
-| [proof.md](proof.md) | Lemma 1, Lemma 2, Theorem 1, with numerical checks |
-| [collisions.md](collisions.md) | collision counts per script class, causes, notable groups |
-| [determinism.md](determinism.md) | the three CPU decode runs and their hashes |
-| `results/tables.md` | every table rendered from the result files, including **every collision group with its cause** |
-| `results/<tok>/summary.json` | table hashes, counts by cause and by script class, the paper-claim check |
-| `results/<tok>/checks.json` | Lemma 1 / Lemma 2 / Theorem 1 / mode checks |
-| `results/<tok>/collisions_by_script_{decode,raw}.csv` | per-script counts (fragments kept separate) |
-| `results/<tok>/groups_{decode,raw}.jsonl` | every collision group: IDs, cause, shared row (hex), members' pieces and true bytes |
-| `results/determinism.json`, `results/overview.json`, `results/run.log` | run outputs |
-| `src/tables.py` | builds the decode and raw tables |
-| `src/script_class.py` | script class from true bytes (fragments classed by lead byte) |
-| `src/collisions.py` | grouping, cause rules, per-script counts |
-| `src/checks.py` | numerical checks for the proofs |
-| `src/determinism.py` | three fresh CPU decode runs |
-| `src/run_all.py` | runs everything |
-| `src/report.py` | renders `results/tables.md` |
-| `src/pr_precheck.py` | runs the lab's pr-guard rules on staged files |
+| `kron_audit/` | the package; one job per module (map in [ARCHITECTURE.md](ARCHITECTURE.md#modules)) |
+| `configs/` | run configs: `p32.yaml`, `p64.yaml`, `example-local.yaml` |
+| `tests/` | pytest suite, offline (uses the local HF cache) |
+| `tools/pr_precheck.py` | runs the lab's pr-guard rules on staged files before a commit |
+| `results/<run>/tables.md` | every table of a run, rendered, including **every collision group with its cause** |
+| `results/<run>/<tok>/summary.json` | table hashes, provenance, counts by cause and script class, the paper-claim check |
+| `results/<run>/<tok>/checks.json` | Lemma 1 / Lemma 2 / Theorem 1 / mode checks |
+| `results/<run>/<tok>/collisions_by_script_{decode,raw}.csv` | per-script counts (fragments kept separate) |
+| `results/<run>/<tok>/groups_{decode,raw}.jsonl` | every collision group: IDs, cause, shared row (hex), members' pieces and true bytes |
+| `results/<run>/{overview,determinism}.json`, `config.resolved.yaml`, `run.log` | run-level outputs; the exact config used |
+| `results/compare_p32_p64.md` | the generated P=32 vs P=64 comparison |
+| `artifacts/` (gitignored) | binary tables `<run>/<tok>/{decode,raw}.npz`; their SHA-256 hashes are in `determinism.md` |
 
-`artifacts/` (gitignored) holds the binary tables `{decode,raw}_P32.npz`. They are not committed, since Gemma's is over pr-guard's 5 MB limit; their SHA-256 hashes are in `determinism.md`.
-
-## Reproduce
-
-CPU only. About 6 minutes for the analysis plus about 3.5 minutes for the three determinism runs, on an Apple M-series laptop.
-
-```bash
-cd teams/04-ke2/kronecker-p32
-python3.10 -m venv .venv
-.venv/bin/pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
-.venv/bin/pip install -r requirements.txt
-.venv/bin/python src/run_all.py      # tables, collisions, proof checks, determinism
-.venv/bin/python src/report.py       # results/tables.md
-```
-
-`run_all.py` exits non-zero if any check fails, and logs `ALL PASS` otherwise. Pass tokenizer names (e.g. `src/run_all.py gpt2`) for a quick partial run; that skips the determinism step.
+**Lab rules.** Files stay under `teams/04-ke2/<topic>/`, under 5 MB, with no data or archive extensions and no email addresses. Run `tools/pr_precheck.py` before committing. The lab's email regex also flags top-level `pytest.mark…` decorators, so the tests use `parametrize = pytest.mark.parametrize`.

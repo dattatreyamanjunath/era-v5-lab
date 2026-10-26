@@ -1,0 +1,116 @@
+{
+  "gpt2": {
+    "status": "ok",
+    "V": 50257,
+    "P": 64,
+    "decode": {
+      "distinct_rows": 49923,
+      "collision_groups": 8,
+      "colliding_tokens": 342,
+      "ids_without_unique_row": 334
+    },
+    "raw": {
+      "distinct_rows": 50256,
+      "collision_groups": 1,
+      "colliding_tokens": 2,
+      "ids_without_unique_row": 1
+    },
+    "all_checks_pass": true,
+    "seconds": 59.2
+  },
+  "llama-3.2": {
+    "status": "ok",
+    "V": 128256,
+    "P": 64,
+    "decode": {
+      "distinct_rows": 126940,
+      "collision_groups": 31,
+      "colliding_tokens": 1347,
+      "ids_without_unique_row": 1316
+    },
+    "raw": {
+      "distinct_rows": 128156,
+      "collision_groups": 18,
+      "colliding_tokens": 118,
+      "ids_without_unique_row": 100
+    },
+    "all_checks_pass": true,
+    "seconds": 162.3
+  },
+  "qwen3": {
+    "status": "ok",
+    "V": 151669,
+    "P": 64,
+    "decode": {
+      "distinct_rows": 150233,
+      "collision_groups": 29,
+      "colliding_tokens": 1465,
+      "ids_without_unique_row": 1436
+    },
+    "raw": {
+      "distinct_rows": 151569,
+      "collision_groups": 18,
+      "colliding_tokens": 118,
+      "ids_without_unique_row": 100
+    },
+    "all_checks_pass": true,
+    "seconds": 153.7
+  },
+  "gemma-3": {
+    "status": "ok",
+    "V": 262145,
+    "P": 64,
+    "decode": {
+      "distinct_rows": 262035,
+      "collision_groups": 110,
+      "colliding_tokens": 220,
+      "ids_without_unique_row": 110
+    },
+    "raw": {
+      "distinct_rows": 262035,
+      "collision_groups": 110,
+      "colliding_tokens": 220,
+      "ids_without_unique_row": 110
+    },
+    "all_checks_pass": true,
+    "seconds": 273.5
+  },
+  "deepseek-v3": {
+    "status": "ok",
+    "V": 128815,
+    "P": 64,
+    "decode": {
+      "distinct_rows": 127736,
+      "collision_groups": 41,
+      "colliding_tokens": 1120,
+      "ids_without_unique_row": 1079
+    },
+    "raw": {
+      "distinct_rows": 128806,
+      "collision_groups": 5,
+      "colliding_tokens": 14,
+      "ids_without_unique_row": 9
+    },
+    "all_checks_pass": true,
+    "seconds": 112.1
+  },
+  "gpt-oss": {
+    "status": "ok",
+    "V": 200019,
+    "P": 64,
+    "decode": {
+      "distinct_rows": 198744,
+      "collision_groups": 29,
+      "colliding_tokens": 1304,
+      "ids_without_unique_row": 1275
+    },
+    "raw": {
+      "distinct_rows": 199947,
+      "collision_groups": 11,
+      "colliding_tokens": 83,
+      "ids_without_unique_row": 72
+    },
+    "all_checks_pass": true,
+    "seconds": 193.1
+  }
+}

@@ -1,0 +1,30 @@
+2026-10-26 20:51:42,181 run p64 | P=64 D=16384 | 6 tokenizers | torch 2.14.1 transformers 5.20.2 tokenizers 0.23.3 kronecker_embeddings 0.1.1
+2026-10-26 20:51:45,591 [gpt2] V=50257 P=64 family=bbpe tables built (3.4s)
+2026-10-26 20:52:09,281 [gpt2/decode] distinct=49923 groups=8 colliding=342 | lemma1=ok lemma2=ok theorem1=ok modes=ok
+2026-10-26 20:52:41,339 [gpt2/raw] distinct=50256 groups=1 colliding=2 | lemma1=ok lemma2=ok theorem1=ok modes=ok
+2026-10-26 20:52:41,343 [gpt2] done in 59.2s, all checks pass: True
+2026-10-26 20:52:47,182 [llama-3.2] V=128256 P=64 family=bbpe tables built (5.8s)
+2026-10-26 20:54:02,120 [llama-3.2/decode] distinct=126940 groups=31 colliding=1347 | lemma1=ok lemma2=ok theorem1=ok modes=ok
+2026-10-26 20:55:23,716 [llama-3.2/raw] distinct=128156 groups=18 colliding=118 | lemma1=ok lemma2=ok theorem1=ok modes=ok
+2026-10-26 20:55:23,724 [llama-3.2] done in 162.3s, all checks pass: True
+2026-10-26 20:55:29,532 [qwen3] V=151669 P=64 family=bbpe tables built (5.3s)
+2026-10-26 20:56:52,410 [qwen3/decode] distinct=150233 groups=29 colliding=1465 | lemma1=ok lemma2=ok theorem1=ok modes=ok
+2026-10-26 20:57:57,942 [qwen3/raw] distinct=151569 groups=18 colliding=118 | lemma1=ok lemma2=ok theorem1=ok modes=ok
+2026-10-26 20:57:57,952 [qwen3] done in 153.7s, all checks pass: True
+2026-10-26 20:58:07,714 [gemma-3] V=262145 P=64 family=sentencepiece tables built (9.1s)
+2026-10-26 21:00:19,315 [gemma-3/decode] distinct=262035 groups=110 colliding=220 | lemma1=ok lemma2=ok theorem1=ok modes=ok
+2026-10-26 21:02:32,047 [gemma-3/raw] distinct=262035 groups=110 colliding=220 | lemma1=ok lemma2=ok theorem1=ok modes=ok
+2026-10-26 21:02:32,068 [gemma-3] done in 273.5s, all checks pass: True
+2026-10-26 21:02:38,549 [deepseek-v3] V=128815 P=64 family=bbpe tables built (4.9s)
+2026-10-26 21:03:37,209 [deepseek-v3/decode] distinct=127736 groups=41 colliding=1120 | lemma1=ok lemma2=ok theorem1=ok modes=ok
+2026-10-26 21:04:25,740 [deepseek-v3/raw] distinct=128806 groups=5 colliding=14 | lemma1=ok lemma2=ok theorem1=ok modes=ok
+2026-10-26 21:04:25,747 [deepseek-v3] done in 112.1s, all checks pass: True
+2026-10-26 21:04:33,015 [gpt-oss] V=200019 P=64 family=bbpe tables built (7.1s)
+2026-10-26 21:05:54,105 [gpt-oss/decode] distinct=198744 groups=29 colliding=1304 | lemma1=ok lemma2=ok theorem1=ok modes=ok
+2026-10-26 21:07:38,950 [gpt-oss/raw] distinct=199947 groups=11 colliding=83 | lemma1=ok lemma2=ok theorem1=ok modes=ok
+2026-10-26 21:07:38,968 [gpt-oss] done in 193.1s, all checks pass: True
+2026-10-26 21:07:39,783 determinism run 1/3 (seed 0, threads 1) ...
+2026-10-26 21:11:23,716 determinism run 2/3 (seed 1, threads 4) ...
+2026-10-26 21:13:31,043 determinism run 3/3 (seed 2, threads 8) ...
+2026-10-26 21:15:13,503 determinism: PASS
+2026-10-26 21:15:13,717 ALL PASS

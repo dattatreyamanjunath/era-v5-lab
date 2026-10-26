@@ -1,0 +1,56 @@
+script_class,tokens,colliding_tokens,colliding_pct,groups_touching,groups_pure,tokens_utf8_replacement,groups_utf8_replacement,tokens_truncation,groups_truncation
+CJK Han (fragment),565,565,100.0,2,0,565,2,0,0
+Hangul (fragment),254,254,100.0,2,0,254,2,0,0
+Continuation bytes only,132,132,100.0,2,0,132,2,0,0
+Other scripts (fragment),131,131,100.0,3,0,131,3,0,0
+ASCII,93929,95,0.101,17,17,0,0,95,17
+Punctuation/symbols (fragment),51,50,98.039,2,0,50,2,0,0
+Emoji (fragment),47,47,100.0,2,0,47,2,0,0
+Mixed (fragment),39,39,100.0,3,0,39,3,0,0
+Whitespace,441,23,5.215,1,1,0,0,23,1
+Latin-ext (fragment),19,18,94.737,2,0,18,2,0,0
+Arabic (fragment),16,16,100.0,2,0,16,2,0,0
+Invalid UTF-8 byte,13,13,100.0,1,0,13,1,0,0
+CJK symbols (fragment),11,11,100.0,2,0,11,2,0,0
+Greek (fragment),8,8,100.0,2,0,8,2,0,0
+Kana,1841,6,0.326,3,3,6,3,0,0
+Cyrillic (fragment),6,6,100.0,2,0,6,2,0,0
+CJK Han,25882,5,0.019,2,2,5,2,0,0
+Kana (fragment),5,5,100.0,2,0,5,2,0,0
+Hangul,3589,4,0.111,2,2,4,2,0,0
+Replacement char,9,3,33.333,3,0,3,3,0,0
+Bengali (fragment),3,3,100.0,2,0,3,2,0,0
+Devanagari (fragment),3,3,100.0,2,0,3,2,0,0
+Gujarati (fragment),3,3,100.0,2,0,3,2,0,0
+Gurmukhi (fragment),3,3,100.0,2,0,3,2,0,0
+Kannada (fragment),3,3,100.0,2,0,3,2,0,0
+Private use (fragment),3,3,100.0,2,0,3,2,0,0
+Tamil (fragment),3,3,100.0,2,0,3,2,0,0
+Telugu (fragment),3,3,100.0,2,0,3,2,0,0
+Hebrew,3164,2,0.063,1,1,2,1,0,0
+Hebrew (fragment),2,2,100.0,2,0,2,2,0,0
+Malayalam (fragment),2,2,100.0,1,0,2,1,0,0
+Thai (fragment),2,2,100.0,1,0,2,1,0,0
+Combining marks (fragment),2,1,50.0,1,0,1,1,0,0
+Oriya (fragment),1,1,100.0,1,0,1,1,0,0
+Latin-ext,6071,0,0.0,0,0,0,0,0,0
+Cyrillic,4145,0,0.0,0,0,0,0,0,0
+Arabic,4018,0,0.0,0,0,0,0,0,0
+Thai,2571,0,0.0,0,0,0,0,0,0
+Other scripts,1415,0,0.0,0,0,0,0,0,0
+Emoji,1314,0,0.0,0,0,0,0,0,0
+Punctuation/symbols,1032,0,0.0,0,0,0,0,0,0
+CJK symbols,390,0,0.0,0,0,0,0,0,0
+Greek,244,0,0.0,0,0,0,0,0,0
+Devanagari,71,0,0.0,0,0,0,0,0,0
+Bengali,47,0,0.0,0,0,0,0,0,0
+Malayalam,33,0,0.0,0,0,0,0,0,0
+Tamil,30,0,0.0,0,0,0,0,0,0
+Kannada,25,0,0.0,0,0,0,0,0,0
+Gujarati,16,0,0.0,0,0,0,0,0,0
+Special,14,0,0.0,0,0,0,0,0,0
+Telugu,14,0,0.0,0,0,0,0,0,0
+Added/control literal,12,0,0.0,0,0,0,0,0,0
+Gurmukhi,10,0,0.0,0,0,0,0,0,0
+Oriya,7,0,0.0,0,0,0,0,0,0
+Combining marks,5,0,0.0,0,0,0,0,0,0
