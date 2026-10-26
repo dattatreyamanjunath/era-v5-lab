@@ -1,0 +1,57 @@
+name: p32
+codec:
+  pos_dim: 32
+  char_dim: 256
+  length_normalize: true
+  z_normalize: true
+  eps: 1.0e-06
+tokenizers:
+- name: gpt2
+  source: openai-community/gpt2
+  revision: null
+  family: auto
+  trust_remote_code: false
+- name: llama-3.2
+  source: unsloth/Llama-3.2-1B
+  revision: null
+  family: auto
+  trust_remote_code: false
+- name: qwen3
+  source: Qwen/Qwen3-32B
+  revision: null
+  family: auto
+  trust_remote_code: false
+- name: gemma-3
+  source: unsloth/gemma-3-1b-pt
+  revision: null
+  family: auto
+  trust_remote_code: false
+- name: deepseek-v3
+  source: deepseek-ai/DeepSeek-V3-Base
+  revision: null
+  family: auto
+  trust_remote_code: false
+- name: gpt-oss
+  source: openai/gpt-oss-120b
+  revision: null
+  family: auto
+  trust_remote_code: false
+determinism:
+  enabled: true
+  runs:
+  - seed: 0
+    threads: 1
+  - seed: 1
+    threads: 4
+  - seed: 2
+    threads: 8
+compute:
+  chunk_rows: auto
+  chunk_bytes: 134217728
+  mode_check_random_ids: 4096
+  mode_check_max_members: 8192
+  max_workers: 1
+  seed: 0
+base_dir: configs
+results_root: ../results
+artifacts_root: ../artifacts

@@ -1,0 +1,56 @@
+script_class,tokens,colliding_tokens,colliding_pct,groups_touching,groups_pure,tokens_truncation,groups_truncation
+ASCII,72143,35,0.049,10,10,35,10
+Whitespace,157,27,17.197,1,1,27,1
+CJK Han,35289,2,0.006,1,1,2,1
+Punctuation/symbols,481,2,0.416,1,1,2,1
+Other scripts,471,2,0.425,1,1,2,1
+Cyrillic,5252,0,0.0,0,0,0,0
+Arabic,3192,0,0.0,0,0,0,0
+Latin-ext,3146,0,0.0,0,0,0,0
+Thai,1267,0,0.0,0,0,0,0
+Hangul,1131,0,0.0,0,0,0,0
+Hebrew,923,0,0.0,0,0,0,0
+Bengali,861,0,0.0,0,0,0,0
+Added/control literal,816,0,0.0,0,0,0,0
+Kana,797,0,0.0,0,0,0,0
+Greek,649,0,0.0,0,0,0,0
+CJK symbols,369,0,0.0,0,0,0,0
+CJK Han (fragment),336,0,0.0,0,0,0,0
+Devanagari,303,0,0.0,0,0,0,0
+Hangul (fragment),201,0,0.0,0,0,0,0
+Tamil,168,0,0.0,0,0,0,0
+Continuation bytes only,121,0,0.0,0,0,0,0
+Telugu,88,0,0.0,0,0,0,0
+Kannada,87,0,0.0,0,0,0,0
+Other scripts (fragment),69,0,0.0,0,0,0,0
+Malayalam,67,0,0.0,0,0,0,0
+Gujarati,54,0,0.0,0,0,0,0
+Emoji,53,0,0.0,0,0,0,0
+Gurmukhi,40,0,0.0,0,0,0,0
+Punctuation/symbols (fragment),40,0,0.0,0,0,0,0
+Emoji (fragment),37,0,0.0,0,0,0,0
+Mixed (fragment),37,0,0.0,0,0,0,0
+Latin-ext (fragment),23,0,0.0,0,0,0,0
+Hebrew (fragment),18,0,0.0,0,0,0,0
+Oriya,16,0,0.0,0,0,0,0
+Replacement char,14,0,0.0,0,0,0,0
+Invalid UTF-8 byte,13,0,0.0,0,0,0,0
+Combining marks,12,0,0.0,0,0,0,0
+Arabic (fragment),11,0,0.0,0,0,0,0
+Greek (fragment),10,0,0.0,0,0,0,0
+Cyrillic (fragment),8,0,0.0,0,0,0,0
+Bengali (fragment),4,0,0.0,0,0,0,0
+CJK symbols (fragment),4,0,0.0,0,0,0,0
+Telugu (fragment),4,0,0.0,0,0,0,0
+Devanagari (fragment),3,0,0.0,0,0,0,0
+Gujarati (fragment),3,0,0.0,0,0,0,0
+Gurmukhi (fragment),3,0,0.0,0,0,0,0
+Kana (fragment),3,0,0.0,0,0,0,0
+Kannada (fragment),3,0,0.0,0,0,0,0
+Malayalam (fragment),3,0,0.0,0,0,0,0
+Oriya (fragment),3,0,0.0,0,0,0,0
+Private use (fragment),3,0,0.0,0,0,0,0
+Tamil (fragment),3,0,0.0,0,0,0,0
+Combining marks (fragment),2,0,0.0,0,0,0,0
+Special,2,0,0.0,0,0,0,0
+Thai (fragment),2,0,0.0,0,0,0,0
