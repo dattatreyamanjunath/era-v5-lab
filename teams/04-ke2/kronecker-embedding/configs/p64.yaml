@@ -1,0 +1,26 @@
+# The paper's six tokenizers (Table 3) at P = 64.
+# Run:  .venv/bin/python -m kron_audit run --config configs/p64.yaml
+name: p64
+codec:
+  pos_dim: 64            # P: bytes kept per token; D = 256 * P
+  char_dim: 256
+  length_normalize: true
+  z_normalize: true
+  eps: 1.0e-6
+tokenizers:              # source: HF repo id, local folder, or path to tokenizer.json
+  - {name: gpt2,        source: openai-community/gpt2}
+  - {name: llama-3.2,   source: unsloth/Llama-3.2-1B}        # ungated mirror of meta-llama
+  - {name: qwen3,       source: Qwen/Qwen3-32B}
+  - {name: gemma-3,     source: unsloth/gemma-3-1b-pt}       # ungated mirror of google
+  - {name: deepseek-v3, source: deepseek-ai/DeepSeek-V3-Base}
+  - {name: gpt-oss,     source: openai/gpt-oss-120b}
+determinism:
+  enabled: true
+  runs:                  # each run is a fresh process
+    - {seed: 0, threads: 1}
+    - {seed: 1, threads: 4}
+    - {seed: 2, threads: 8}
+compute:
+  chunk_rows: auto       # or an int; auto keeps each codec chunk near chunk_bytes
+  mode_check_random_ids: 4096
+  max_workers: 1         # tokenizers in parallel (each needs ~1-2 GB RAM)

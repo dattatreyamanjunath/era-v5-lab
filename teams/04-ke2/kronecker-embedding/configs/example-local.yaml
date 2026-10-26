@@ -1,0 +1,13 @@
+# Example: audit tokenizers from local files (e.g. one your team trained).
+# Relative paths resolve against this file's folder.
+#   .venv/bin/python -m kron_audit run --config configs/example-local.yaml
+name: local-example
+codec: {pos_dim: 32}
+tokenizers:
+  # A single tokenizer.json (family auto-detected from its decoder/model):
+  - {name: my-bpe, source: ../my_tokenizers/my-bpe/tokenizer.json}
+  # A folder with tokenizer.json + tokenizer_config.json (special tokens come from the config):
+  - {name: my-sp, source: ../my_tokenizers/my-sp, family: auto}
+  # A Hugging Face repo pinned to a commit:
+  - {name: gpt2-pinned, source: openai-community/gpt2, revision: 607a30d783dfa663caf39e06633721c8d4cfcd7e}
+determinism: {enabled: false}
