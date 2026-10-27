@@ -1,0 +1,48 @@
+script_class,tokens,colliding_tokens,colliding_pct,groups_touching,groups_pure
+ASCII,104570,0,0.0,0,0
+Latin-ext,8466,0,0.0,0,0
+Devanagari,4162,0,0.0,0,0
+Bengali,2285,0,0.0,0,0
+Malayalam,1891,0,0.0,0,0
+Gujarati,1832,0,0.0,0,0
+Kannada,1497,0,0.0,0,0
+Telugu,1497,0,0.0,0,0
+Tamil,1130,0,0.0,0,0
+Oriya,725,0,0.0,0,0
+Punctuation/symbols,662,0,0.0,0,0
+Gurmukhi,652,0,0.0,0,0
+CJK Han (fragment),513,0,0.0,0,0
+Whitespace,305,0,0.0,0,0
+Hangul (fragment),230,0,0.0,0,0
+Continuation bytes only,140,0,0.0,0,0
+CJK symbols,136,0,0.0,0,0
+Emoji,79,0,0.0,0,0
+Mixed (fragment),39,0,0.0,0,0
+Emoji (fragment),35,0,0.0,0,0
+Other scripts (fragment),35,0,0.0,0,0
+Punctuation/symbols (fragment),31,0,0.0,0,0
+Latin-ext (fragment),22,0,0.0,0,0
+Replacement char,19,0,0.0,0,0
+Private use (fragment),12,0,0.0,0,0
+Arabic (fragment),11,0,0.0,0,0
+Combining marks,11,0,0.0,0,0
+Cyrillic (fragment),7,0,0.0,0,0
+Kana,7,0,0.0,0,0
+Greek (fragment),6,0,0.0,0,0
+CJK symbols (fragment),5,0,0.0,0,0
+Kana (fragment),5,0,0.0,0,0
+Telugu (fragment),5,0,0.0,0,0
+Thai (fragment),5,0,0.0,0,0
+Bengali (fragment),4,0,0.0,0,0
+Devanagari (fragment),4,0,0.0,0,0
+Gujarati (fragment),4,0,0.0,0,0
+Gurmukhi (fragment),4,0,0.0,0,0
+Kannada (fragment),4,0,0.0,0,0
+Malayalam (fragment),4,0,0.0,0,0
+Oriya (fragment),4,0,0.0,0,0
+Private use,4,0,0.0,0,0
+Special,4,0,0.0,0,0
+Tamil (fragment),4,0,0.0,0,0
+Hebrew (fragment),2,0,0.0,0,0
+Other scripts,2,0,0.0,0,0
+Combining marks (fragment),1,0,0.0,0,0

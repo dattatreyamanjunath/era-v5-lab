@@ -1,0 +1,62 @@
+{
+  "run": "brahmic-p32",
+  "P": 32,
+  "all_hashes_match": true,
+  "runs": [
+    {
+      "run": 1,
+      "pythonhashseed": "0",
+      "torch_threads": 1,
+      "cuda_visible_devices": "",
+      "device": "cpu",
+      "wall_seconds": 19.6
+    },
+    {
+      "run": 2,
+      "pythonhashseed": "1",
+      "torch_threads": 4,
+      "cuda_visible_devices": "",
+      "device": "cpu",
+      "wall_seconds": 12.0
+    },
+    {
+      "run": 3,
+      "pythonhashseed": "2",
+      "torch_threads": 8,
+      "cuda_visible_devices": "",
+      "device": "cpu",
+      "wall_seconds": 11.9
+    }
+  ],
+  "tokenizers": {
+    "brahmic-131k": {
+      "ids_decoded_per_run": 131072,
+      "decode_table_sha256": {
+        "run1": "783f26265de9b12a6dc7366c17effab6b7354170bfc0c9635f708e688f5af35f",
+        "run2": "783f26265de9b12a6dc7366c17effab6b7354170bfc0c9635f708e688f5af35f",
+        "run3": "783f26265de9b12a6dc7366c17effab6b7354170bfc0c9635f708e688f5af35f",
+        "match": true
+      },
+      "raw_table_sha256": {
+        "run1": "d36cdf74777982365555894c95267db4f2b0b518f25b8db20a4cb0cb64f8fe38",
+        "run2": "d36cdf74777982365555894c95267db4f2b0b518f25b8db20a4cb0cb64f8fe38",
+        "run3": "d36cdf74777982365555894c95267db4f2b0b518f25b8db20a4cb0cb64f8fe38",
+        "match": true
+      },
+      "codec_table_sha256": {
+        "run1": "fe40c8ad363bd259daad03dca3d012ebd1ec86a285832d8fb9e3a848f83feeba",
+        "run2": "fe40c8ad363bd259daad03dca3d012ebd1ec86a285832d8fb9e3a848f83feeba",
+        "run3": "fe40c8ad363bd259daad03dca3d012ebd1ec86a285832d8fb9e3a848f83feeba",
+        "match": true
+      }
+    }
+  },
+  "environment": {
+    "python": "3.10.12",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "torch": "2.14.1",
+    "transformers": "5.20.2",
+    "tokenizers": "0.23.3"
+  }
+}

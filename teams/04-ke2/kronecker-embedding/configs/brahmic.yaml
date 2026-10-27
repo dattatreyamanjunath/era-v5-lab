@@ -1,0 +1,11 @@
+# BrahmicTokenizer-131K (theschoolofai), pinned to a Hub commit.
+# P=32:  .venv/bin/python -m kron_audit run --config configs/brahmic.yaml
+# P=64:  .venv/bin/python -m kron_audit run --config configs/brahmic.yaml --pos-dim 64 --name brahmic-p64
+name: brahmic-p32
+codec: {pos_dim: 32, char_dim: 256, length_normalize: true, z_normalize: true, eps: 1.0e-6}
+tokenizers:
+  - {name: brahmic-131k, source: theschoolofai/BrahmicTokenizer-131K, revision: 93df154cbc9dbf038a222c010d9b43906a8a72c3}
+determinism:
+  enabled: true
+  runs: [{seed: 0, threads: 1}, {seed: 1, threads: 4}, {seed: 2, threads: 8}]
+compute: {chunk_rows: auto, mode_check_random_ids: 4096, max_workers: 1}

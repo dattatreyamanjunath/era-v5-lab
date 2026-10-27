@@ -27,6 +27,7 @@ Team 04-ke2. `kron_audit` is a configurable tool that checks, for any `pos_dim` 
 **Documents:**
 - [collisions.md](collisions.md): the P=32 analysis.
 - [p64.md](p64.md): what changes at P=64.
+- [brahmic.md](brahmic.md): BrahmicTokenizer-131K at P=32 and P=64 (zero raw-table collisions).
 - [proof.md](proof.md): Lemma 1, Lemma 2, Theorem 1.
 - [determinism.md](determinism.md): the three decode runs per P.
 - [ARCHITECTURE.md](ARCHITECTURE.md): how the tool is built and extended.

@@ -1,0 +1,21 @@
+{
+  "brahmic-131k": {
+    "status": "ok",
+    "V": 131072,
+    "P": 32,
+    "decode": {
+      "distinct_rows": 129931,
+      "collision_groups": 10,
+      "colliding_tokens": 1151,
+      "ids_without_unique_row": 1141
+    },
+    "raw": {
+      "distinct_rows": 131072,
+      "collision_groups": 0,
+      "colliding_tokens": 0,
+      "ids_without_unique_row": 0
+    },
+    "all_checks_pass": true,
+    "seconds": 62.4
+  }
+}

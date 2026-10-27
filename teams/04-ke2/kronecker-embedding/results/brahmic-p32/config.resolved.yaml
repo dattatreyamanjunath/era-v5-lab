@@ -1,0 +1,32 @@
+name: brahmic-p32
+codec:
+  pos_dim: 32
+  char_dim: 256
+  length_normalize: true
+  z_normalize: true
+  eps: 1.0e-06
+tokenizers:
+- name: brahmic-131k
+  source: theschoolofai/BrahmicTokenizer-131K
+  revision: 93df154cbc9dbf038a222c010d9b43906a8a72c3
+  family: auto
+  trust_remote_code: false
+determinism:
+  enabled: true
+  runs:
+  - seed: 0
+    threads: 1
+  - seed: 1
+    threads: 4
+  - seed: 2
+    threads: 8
+compute:
+  chunk_rows: auto
+  chunk_bytes: 134217728
+  mode_check_random_ids: 4096
+  mode_check_max_members: 8192
+  max_workers: 1
+  seed: 0
+base_dir: configs
+results_root: ../results
+artifacts_root: ../artifacts
