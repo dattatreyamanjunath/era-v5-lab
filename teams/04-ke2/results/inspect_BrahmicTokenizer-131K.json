@@ -1,5 +1,5 @@
 {
-  "tokenizer": "/home/mukund/.cache/huggingface/hub/models--theschoolofai--BrahmicTokenizer-131K/snapshots/93df154cbc9dbf038a222c010d9b43906a8a72c3",
+  "tokenizer": "theschoolofai/BrahmicTokenizer-131K",
   "tokenizer_json_sha256": "01d968a7970b029c071b29f060abf6104b66168dedf2ff3b1a0290a545739fff",
   "tokenizer_class": "TokenizersBackend",
   "versions": {
@@ -235,7 +235,7 @@
     "examples": []
   },
   "decode_bug": {
-    "seconds": 0.7,
+    "seconds": 0.76,
     "n_checked": 131072,
     "n_decode_differs_from_raw": 1306,
     "n_decode_contains_fffd": 1326,
@@ -518,5 +518,5 @@
       }
     ]
   },
-  "seconds_total": 12.81
+  "seconds_total": 20.36
 }

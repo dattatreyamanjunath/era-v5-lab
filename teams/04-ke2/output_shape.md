@@ -64,8 +64,8 @@ token in a future tokenizer would be cut off.
 | | Formula | Example at `d_model = 768` |
 |---|---|---|
 | Standard embedding | `V · d_model` (V = 131,072) | 100.66 M |
-| KE2, P = 32 | `8,192 · d_model` | 6.29 M (16× fewer) |
-| KE2, P = 64 | `16,384 · d_model` | 12.58 M (8× fewer) |
+| KE2, P = 32 | `8,192 · d_model` | 6.29 M |
+| KE2, P = 64 | `16,384 · d_model` | 12.58 M |
 
 KE2's size does not depend on V, so adding special-token slots does not change it.
 

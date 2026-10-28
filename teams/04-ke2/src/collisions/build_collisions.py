@@ -45,6 +45,7 @@ if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
 import build_tables as bt  # noqa: E402
+from ke2.config import HF_ID, TOKENIZER_SHA256  # noqa: E402
 from ke2.config import RESULTS_DIR as RESULTS  # noqa: E402  (teams/04-ke2/results)
 
 CAUSES = ("empty", "duplicate_vocab", "special_literal", "decode_collapse", "truncation", "other")
@@ -255,7 +256,16 @@ def group_rows(a: Audit, tb) -> list[dict]:
     return rows
 
 
-def write_outputs(a: Audit, tb, out_dir: Path) -> dict:
+def tokenizer_name(tb, override: str | None = None) -> str:
+    """A portable name for the tokenizer (never a local path): the HF id for the pinned file."""
+    if override:
+        return override
+    if tb.sha256 == TOKENIZER_SHA256:
+        return HF_ID
+    return f"local {Path(tb.path).name} (identified by tokenizer_sha256)"
+
+
+def write_outputs(a: Audit, tb, out_dir: Path, name: str | None = None) -> dict:
     out_dir.mkdir(parents=True, exist_ok=True)
     with open(out_dir / "collisions.csv", "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=GROUP_COLUMNS)
@@ -267,7 +277,7 @@ def write_outputs(a: Audit, tb, out_dir: Path) -> dict:
         w.writerows(a.summary)
     tot = totals(a)
     meta = {
-        "tokenizer_path": str(tb.path),
+        "tokenizer": tokenizer_name(tb, name),
         "tokenizer_sha256": a.tokenizer_sha256,
         "vocab_size": a.vocab_size,
         "definition": "collision = identical table row (bytes after truncation to P)",
@@ -292,7 +302,7 @@ def _versions() -> dict:
 
 
 def print_report(a: Audit, meta: dict) -> None:
-    print(f"tokenizer  {meta['tokenizer_path']}")
+    print(f"tokenizer  {meta['tokenizer']}")
     print(f"sha256     {a.tokenizer_sha256}")
     print(f"V          {a.vocab_size}\n")
     print(f"{'table':<10} {'groups':>6} {'in_groups':>9} {'excess':>6} {'largest':>7}  causes")
@@ -318,6 +328,7 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--tokenizer", default=None, help="tokenizer.json / dir / HF id")
     ap.add_argument("--out", default=str(RESULTS))
+    ap.add_argument("--tokenizer-name", default=None, help="name recorded in collisions_meta.json (default: HF id)")
     ap.add_argument("--allow-download", action="store_true", help="fetch the tokenizer from the HF Hub if needed")
     args = ap.parse_args(argv)
 
@@ -327,7 +338,7 @@ def main(argv=None) -> int:
         tables["decode", P] = bt.build_decode_table(tb, P)
         tables["raw", P] = bt.build_raw_table(tb, P)
     a = audit(tb, tables)
-    meta = write_outputs(a, tb, Path(args.out))
+    meta = write_outputs(a, tb, Path(args.out), args.tokenizer_name)
     print_report(a, meta)
     print(f"\nwrote {Path(args.out).resolve()}")
     return 0 if meta["gate_zero_other"] else 1

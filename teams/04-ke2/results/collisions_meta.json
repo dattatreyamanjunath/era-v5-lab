@@ -1,5 +1,5 @@
 {
-  "tokenizer_path": "/home/mukund/.cache/huggingface/hub/models--theschoolofai--BrahmicTokenizer-131K/snapshots/93df154cbc9dbf038a222c010d9b43906a8a72c3/tokenizer.json",
+  "tokenizer": "theschoolofai/BrahmicTokenizer-131K",
   "tokenizer_sha256": "01d968a7970b029c071b29f060abf6104b66168dedf2ff3b1a0290a545739fff",
   "vocab_size": 131072,
   "definition": "collision = identical table row (bytes after truncation to P)",

@@ -314,14 +314,17 @@ def main():
         from ke2.tokenizer import resolve_tokenizer_path
 
         args.tokenizer = str(resolve_tokenizer_path().parent)
-        name = "BrahmicTokenizer-131K"
+        label = "theschoolofai/BrahmicTokenizer-131K"
+    elif Path(args.tokenizer).exists():
+        label = Path(args.tokenizer).name  # a local folder: record its name, never the full path
     else:
-        name = args.tokenizer.rstrip("/").split("/")[-1]
+        label = args.tokenizer  # an HF id
+    name = label.rstrip("/").split("/")[-1]
     tok = load_tokenizer(args.tokenizer)
     V, raw, kind, info = build_raw_table(tok)
 
     report = {
-        "tokenizer": args.tokenizer,
+        "tokenizer": label,
         "tokenizer_json_sha256": tokenizer_json_sha256(args.tokenizer),
         "tokenizer_class": type(tok).__name__,
         "versions": versions(),
